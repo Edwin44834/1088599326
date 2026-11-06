@@ -1,0 +1,26 @@
+services:
+  
+
+  prueba_homero:
+    image: python:3.12
+    container_name: test_homero
+    volumes:
+      - ./prueba_homero:/app
+    ports:
+      - "8090:8089"
+    command: sh -c "pip install locust && locust -f /app/locustfile.py --web-host=0.0.0.0"
+
+
+
+#suma en php punto 3
+  php_suma:
+    image: php:latest
+    container-name: contenedor_php_parcial
+    working_dir: /var/www/html
+    volumes:
+      - ./php_suma:/var/www/html
+    command: php -s 0.0.0.0:8000 -t /var/www/html
+    ports:
+      -"8080: 8000"
+    networks:
+      - red-parcial
