@@ -11,6 +11,13 @@ services:
     command: sh -c "pip install locust && locust -f /app/locustfile.py --web-host=0.0.0.0"
 
 
+#punto 2
+  pythom_api:
+    image-python : latest
+    combinar_name: contenedor_python_parcial
+    working_dir: /app
+    volumes:
+      - ./python.api :/app
 
 #suma en php punto 3
   php_suma:
@@ -24,3 +31,6 @@ services:
       -"8080: 8000"
     networks:
       - red-parcial
+
+
+
